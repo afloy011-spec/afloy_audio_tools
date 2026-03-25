@@ -36,16 +36,15 @@ Professional audio editing nodes for [ComfyUI](https://github.com/comfyanonymous
 
 1. [**Download ZIP**](https://github.com/afloy011-spec/afloy_audio_tools/archive/refs/heads/main.zip) (or click the green button above).
 2. Extract the archive — you'll get a folder `afloy_audio_tools-main`.
-3. **Rename** it to `Afloy Audio Tools` (remove `-main`).
-4. Move the whole folder into your ComfyUI `custom_nodes` directory.
-5. Restart ComfyUI.
+3. Move the whole folder into your ComfyUI `custom_nodes` directory.
+4. Restart ComfyUI.
 
 After installation your folder structure should look like this:
 
 ```
 ComfyUI/
 └── custom_nodes/
-    └── Afloy Audio Tools/      ← the folder you moved
+    └── afloy_audio_tools-main/  ← the folder you moved
         ├── __init__.py          ← all 3 nodes live here
         ├── web/
         │   └── trim_audio.js
