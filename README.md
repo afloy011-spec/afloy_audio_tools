@@ -4,7 +4,7 @@ Custom audio nodes for [ComfyUI](https://github.com/comfyanonymous/ComfyUI) — 
 
 ![Afloy Audio Trim — interactive waveform](docs/trim_audio_preview.png)
 
-<a href="#installation" role="button" aria-label="Install Afloy Audio Tools" style="display:inline-block;background-color:#2ea44f;color:#fff;padding:10px 18px;border-radius:6px;font-weight:600;border:1px solid #2ea44f;text-decoration:none;line-height:1.2;">Install</a>
+[![Install](https://img.shields.io/badge/Install-Afloy%20Audio%20Tools-2ea44f?style=for-the-badge&logo=download&logoColor=ffffff)](#installation)
 
 ---
 
