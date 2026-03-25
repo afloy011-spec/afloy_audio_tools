@@ -480,9 +480,9 @@ function setupWaveformWidget(node) {
             doPlay(node, st);
             return true;
         }
-        if (e.shiftKey && (e.key in FRAME_STEP_KEYS)) {
+        if (e.shiftKey && (e.code in FRAME_STEP_KEYS)) {
             e.preventDefault();
-            const step  = FRAME_STEP_KEYS[e.key];
+            const step  = FRAME_STEP_KEYS[e.code];
             const name  = st.activeMarker === "start" ? "start_sec" : "end_sec";
             const wid   = node.widgets?.find(x => x.name === name);
             const other = st.activeMarker === "start"
@@ -505,7 +505,7 @@ function setupWaveformWidget(node) {
             node.setDirtyCanvas(true, false);
             return true;
         }
-        if (e.key === "i" || e.key === "I") {
+        if (e.code === "KeyI") {
             let curT = null;
             if (st.playSource && st.audioCtx) {
                 const elapsed = st.audioCtx.currentTime - st.playStartAt;
@@ -520,7 +520,7 @@ function setupWaveformWidget(node) {
             }
             return true;
         }
-        if (e.key === "o" || e.key === "O") {
+        if (e.code === "KeyO") {
             let curT = null;
             if (st.playSource && st.audioCtx) {
                 const elapsed = st.audioCtx.currentTime - st.playStartAt;
