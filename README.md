@@ -4,7 +4,7 @@ Custom audio nodes for [ComfyUI](https://github.com/comfyanonymous/ComfyUI) — 
 
 ![Afloy Audio Trim — interactive waveform](docs/trim_audio_preview.png)
 
-<a href="#installation" style="display:inline-block;padding:10px 18px;background:#2ea44f;color:white;text-decoration:none;border-radius:6px;font-weight:600;">Install</a>
+<a href="#installation" role="button" aria-label="Install Afloy Audio Tools" style="display:inline-block;background-color:#2ea44f;color:#fff;padding:10px 18px;border-radius:6px;font-weight:600;border:1px solid #2ea44f;text-decoration:none;line-height:1.2;">Install</a>
 
 ---
 
@@ -31,13 +31,36 @@ Widget highlights:
 
 **Keyboard shortcuts** (when the node is selected):
 
-| Key | Action |
-|:---|:---|
-| `Space` | Play / Stop |
-| `Shift + ←` `→` | Nudge active marker by 1 second |
-| `Tab` | Switch active marker (start ↔ end) |
-| `I` | Set start marker to cursor / playback position |
-| `O` | Set end marker to cursor / playback position |
+<table style="border-collapse:collapse;width:100%;table-layout:fixed;margin:8px 0;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:35%;">Key</th>
+      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border:1px solid #d0d7de;padding:8px;"><code>`Space`</code></td>
+      <td style="border:1px solid #d0d7de;padding:8px;">Play / Stop</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #d0d7de;padding:8px;"><code>`Shift + ←` `→`</code></td>
+      <td style="border:1px solid #d0d7de;padding:8px;">Nudge active marker by 1 second</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #d0d7de;padding:8px;"><code>`Tab`</code></td>
+      <td style="border:1px solid #d0d7de;padding:8px;">Switch active marker (start ↔ end)</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #d0d7de;padding:8px;"><code>`I`</code></td>
+      <td style="border:1px solid #d0d7de;padding:8px;">Set start marker to cursor / playback position</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #d0d7de;padding:8px;"><code>`O`</code></td>
+      <td style="border:1px solid #d0d7de;padding:8px;">Set end marker to cursor / playback position</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -49,18 +72,36 @@ All three nodes appear under **audio > Afloy Audio Tools** in the node menu.
 
 Interactive audio trimmer with a DAW-style waveform widget.
 
-| Input | Type | Description |
-|:---|:---|:---|
-| `audio` | AUDIO | Source audio |
-| `start_sec` | FLOAT | Trim start (seconds) |
-| `end_sec` | FLOAT | Trim end (`-1` = end of file) |
+<table style="border-collapse:collapse;width:100%;table-layout:fixed;margin:8px 0;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:28%;">Input</th>
+      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:18%;">Type</th>
+      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`audio`</code></td><td style="border:1px solid #d0d7de;padding:8px;">AUDIO</td><td style="border:1px solid #d0d7de;padding:8px;">Source audio</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`start_sec`</code></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Trim start (seconds)</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`end_sec`</code></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Trim end (<code>-1</code> = end of file)</td></tr>
+  </tbody>
+</table>
 
-| Output | Type | Description |
-|:---|:---|:---|
-| `audio` | AUDIO | Trimmed segment |
-| `waveform_preview` | IMAGE | Static waveform image |
-| `duration_sec` | FLOAT | Segment length |
-| `timecode` | STRING | `MM:SS.ms` timecode |
+<table style="border-collapse:collapse;width:100%;table-layout:fixed;margin:8px 0;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:28%;">Output</th>
+      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:18%;">Type</th>
+      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`audio`</code></td><td style="border:1px solid #d0d7de;padding:8px;">AUDIO</td><td style="border:1px solid #d0d7de;padding:8px;">Trimmed segment</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`waveform_preview`</code></td><td style="border:1px solid #d0d7de;padding:8px;">IMAGE</td><td style="border:1px solid #d0d7de;padding:8px;">Static waveform image</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`duration_sec`</code></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Segment length</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`timecode`</code></td><td style="border:1px solid #d0d7de;padding:8px;">STRING</td><td style="border:1px solid #d0d7de;padding:8px;"><code>MM:SS.ms</code> timecode</td></tr>
+  </tbody>
+</table>
 
 ---
 
@@ -68,19 +109,37 @@ Interactive audio trimmer with a DAW-style waveform widget.
 
 Returns audio length in multiple formats — useful for syncing with video/animation.
 
-| Input | Type | Description |
-|:---|:---|:---|
-| `audio` | AUDIO | Source audio |
-| `fps` | FLOAT | Frames per second (default 24) |
+<table style="border-collapse:collapse;width:100%;table-layout:fixed;margin:8px 0;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:28%;">Input</th>
+      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:18%;">Type</th>
+      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`audio`</code></td><td style="border:1px solid #d0d7de;padding:8px;">AUDIO</td><td style="border:1px solid #d0d7de;padding:8px;">Source audio</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`fps`</code></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Frames per second (default 24)</td></tr>
+  </tbody>
+</table>
 
-| Output | Type | Description |
-|:---|:---|:---|
-| `duration_sec` | FLOAT | Duration in seconds |
-| `duration_sec_int` | INT | Rounded duration |
-| `frames` | INT | Frame count at given FPS |
-| `timecode` | STRING | `MM:SS.ms` |
-| `sample_rate` | INT | Hz |
-| `channels` | INT | Mono/Stereo |
+<table style="border-collapse:collapse;width:100%;table-layout:fixed;margin:8px 0;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:28%;">Output</th>
+      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:18%;">Type</th>
+      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`duration_sec`</code></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Duration in seconds</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`duration_sec_int`</code></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Rounded duration</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`frames`</code></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Frame count at given FPS</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`timecode`</code></td><td style="border:1px solid #d0d7de;padding:8px;">STRING</td><td style="border:1px solid #d0d7de;padding:8px;"><code>MM:SS.ms</code></td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`sample_rate`</code></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Hz</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`channels`</code></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Mono/Stereo</td></tr>
+  </tbody>
+</table>
 
 ---
 
@@ -88,17 +147,35 @@ Returns audio length in multiple formats — useful for syncing with video/anima
 
 Diagnostic node that outputs audio metadata as individual values and a summary string.
 
-| Input | Type | Description |
-|:---|:---|:---|
-| `audio` | AUDIO | Source audio |
+<table style="border-collapse:collapse;width:100%;table-layout:fixed;margin:8px 0;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:28%;">Input</th>
+      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:18%;">Type</th>
+      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`audio`</code></td><td style="border:1px solid #d0d7de;padding:8px;">AUDIO</td><td style="border:1px solid #d0d7de;padding:8px;">Source audio</td></tr>
+  </tbody>
+</table>
 
-| Output | Type | Description |
-|:---|:---|:---|
-| `sample_rate` | INT | Sample rate in Hz |
-| `channels` | INT | Number of channels |
-| `total_samples` | INT | Total sample count |
-| `duration_sec` | FLOAT | Duration in seconds |
-| `info` | STRING | Human-readable summary |
+<table style="border-collapse:collapse;width:100%;table-layout:fixed;margin:8px 0;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:28%;">Output</th>
+      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:18%;">Type</th>
+      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`sample_rate`</code></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Sample rate in Hz</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`channels`</code></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Number of channels</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`total_samples`</code></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Total sample count</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`duration_sec`</code></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Duration in seconds</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`info`</code></td><td style="border:1px solid #d0d7de;padding:8px;">STRING</td><td style="border:1px solid #d0d7de;padding:8px;">Human-readable summary</td></tr>
+  </tbody>
+</table>
 
 ---
 
