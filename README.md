@@ -40,23 +40,23 @@ Widget highlights:
   </thead>
   <tbody>
     <tr>
-      <td style="border:1px solid #d0d7de;padding:8px;"><code>`Space`</code></td>
+      <td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">Space</span></td>
       <td style="border:1px solid #d0d7de;padding:8px;">Play / Stop</td>
     </tr>
     <tr>
-      <td style="border:1px solid #d0d7de;padding:8px;"><code>`Shift + ←` `→`</code></td>
+      <td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">Shift + &larr; &rarr;</span></td>
       <td style="border:1px solid #d0d7de;padding:8px;">Nudge active marker by 1 second</td>
     </tr>
     <tr>
-      <td style="border:1px solid #d0d7de;padding:8px;"><code>`Tab`</code></td>
+      <td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">Tab</span></td>
       <td style="border:1px solid #d0d7de;padding:8px;">Switch active marker (start ↔ end)</td>
     </tr>
     <tr>
-      <td style="border:1px solid #d0d7de;padding:8px;"><code>`I`</code></td>
+      <td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">I</span></td>
       <td style="border:1px solid #d0d7de;padding:8px;">Set start marker to cursor / playback position</td>
     </tr>
     <tr>
-      <td style="border:1px solid #d0d7de;padding:8px;"><code>`O`</code></td>
+      <td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">O</span></td>
       <td style="border:1px solid #d0d7de;padding:8px;">Set end marker to cursor / playback position</td>
     </tr>
   </tbody>
@@ -81,9 +81,9 @@ Interactive audio trimmer with a DAW-style waveform widget.
     </tr>
   </thead>
   <tbody>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`audio`</code></td><td style="border:1px solid #d0d7de;padding:8px;">AUDIO</td><td style="border:1px solid #d0d7de;padding:8px;">Source audio</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`start_sec`</code></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Trim start (seconds)</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`end_sec`</code></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Trim end (<code>-1</code> = end of file)</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">audio</span></td><td style="border:1px solid #d0d7de;padding:8px;">AUDIO</td><td style="border:1px solid #d0d7de;padding:8px;">Source audio</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">start_sec</span></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Trim start (seconds)</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">end_sec</span></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Trim end (-1 = end of file)</td></tr>
   </tbody>
 </table>
 
@@ -96,10 +96,10 @@ Interactive audio trimmer with a DAW-style waveform widget.
     </tr>
   </thead>
   <tbody>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`audio`</code></td><td style="border:1px solid #d0d7de;padding:8px;">AUDIO</td><td style="border:1px solid #d0d7de;padding:8px;">Trimmed segment</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`waveform_preview`</code></td><td style="border:1px solid #d0d7de;padding:8px;">IMAGE</td><td style="border:1px solid #d0d7de;padding:8px;">Static waveform image</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`duration_sec`</code></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Segment length</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`timecode`</code></td><td style="border:1px solid #d0d7de;padding:8px;">STRING</td><td style="border:1px solid #d0d7de;padding:8px;"><code>MM:SS.ms</code> timecode</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">audio</span></td><td style="border:1px solid #d0d7de;padding:8px;">AUDIO</td><td style="border:1px solid #d0d7de;padding:8px;">Trimmed segment</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">waveform_preview</span></td><td style="border:1px solid #d0d7de;padding:8px;">IMAGE</td><td style="border:1px solid #d0d7de;padding:8px;">Static waveform image</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">duration_sec</span></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Segment length</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">timecode</span></td><td style="border:1px solid #d0d7de;padding:8px;">STRING</td><td style="border:1px solid #d0d7de;padding:8px;">MM:SS.ms timecode</td></tr>
   </tbody>
 </table>
 
@@ -118,8 +118,8 @@ Returns audio length in multiple formats — useful for syncing with video/anima
     </tr>
   </thead>
   <tbody>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`audio`</code></td><td style="border:1px solid #d0d7de;padding:8px;">AUDIO</td><td style="border:1px solid #d0d7de;padding:8px;">Source audio</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`fps`</code></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Frames per second (default 24)</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">audio</span></td><td style="border:1px solid #d0d7de;padding:8px;">AUDIO</td><td style="border:1px solid #d0d7de;padding:8px;">Source audio</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">fps</span></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Frames per second (default 24)</td></tr>
   </tbody>
 </table>
 
@@ -132,12 +132,12 @@ Returns audio length in multiple formats — useful for syncing with video/anima
     </tr>
   </thead>
   <tbody>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`duration_sec`</code></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Duration in seconds</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`duration_sec_int`</code></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Rounded duration</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`frames`</code></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Frame count at given FPS</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`timecode`</code></td><td style="border:1px solid #d0d7de;padding:8px;">STRING</td><td style="border:1px solid #d0d7de;padding:8px;"><code>MM:SS.ms</code></td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`sample_rate`</code></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Hz</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`channels`</code></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Mono/Stereo</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">duration_sec</span></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Duration in seconds</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">duration_sec_int</span></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Rounded duration</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">frames</span></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Frame count at given FPS</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">timecode</span></td><td style="border:1px solid #d0d7de;padding:8px;">STRING</td><td style="border:1px solid #d0d7de;padding:8px;">MM:SS.ms</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">sample_rate</span></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Hz</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">channels</span></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Mono/Stereo</td></tr>
   </tbody>
 </table>
 
@@ -156,7 +156,7 @@ Diagnostic node that outputs audio metadata as individual values and a summary s
     </tr>
   </thead>
   <tbody>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`audio`</code></td><td style="border:1px solid #d0d7de;padding:8px;">AUDIO</td><td style="border:1px solid #d0d7de;padding:8px;">Source audio</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">audio</span></td><td style="border:1px solid #d0d7de;padding:8px;">AUDIO</td><td style="border:1px solid #d0d7de;padding:8px;">Source audio</td></tr>
   </tbody>
 </table>
 
@@ -169,11 +169,11 @@ Diagnostic node that outputs audio metadata as individual values and a summary s
     </tr>
   </thead>
   <tbody>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`sample_rate`</code></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Sample rate in Hz</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`channels`</code></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Number of channels</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`total_samples`</code></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Total sample count</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`duration_sec`</code></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Duration in seconds</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><code>`info`</code></td><td style="border:1px solid #d0d7de;padding:8px;">STRING</td><td style="border:1px solid #d0d7de;padding:8px;">Human-readable summary</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">sample_rate</span></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Sample rate in Hz</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">channels</span></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Number of channels</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">total_samples</span></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Total sample count</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">duration_sec</span></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Duration in seconds</td></tr>
+    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:block;width:100%;">info</span></td><td style="border:1px solid #d0d7de;padding:8px;">STRING</td><td style="border:1px solid #d0d7de;padding:8px;">Human-readable summary</td></tr>
   </tbody>
 </table>
 
