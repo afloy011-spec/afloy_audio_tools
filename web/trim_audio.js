@@ -480,9 +480,9 @@ function setupWaveformWidget(node) {
             doPlay(node, st);
             return true;
         }
-        if (e.key in FRAME_STEP_KEYS) {
+        if (e.shiftKey && (e.key in FRAME_STEP_KEYS)) {
             e.preventDefault();
-            const step  = (e.shiftKey ? 10 : 1) * FRAME_STEP_KEYS[e.key] / fps;
+            const step  = FRAME_STEP_KEYS[e.key];
             const name  = st.activeMarker === "start" ? "start_sec" : "end_sec";
             const wid   = node.widgets?.find(x => x.name === name);
             const other = st.activeMarker === "start"
@@ -506,9 +506,14 @@ function setupWaveformWidget(node) {
             return true;
         }
         if (e.key === "i" || e.key === "I") {
+            let curT = null;
             if (st.playSource && st.audioCtx) {
                 const elapsed = st.audioCtx.currentTime - st.playStartAt;
-                const curT = st.playOffset + Math.min(elapsed, st.playDuration);
+                curT = st.playOffset + Math.min(elapsed, st.playDuration);
+            } else if (st.scrubTime !== null) {
+                curT = st.scrubTime;
+            }
+            if (curT !== null) {
                 const wid = node.widgets?.find(x => x.name === "start_sec");
                 if (wid) { wid.value = Math.round(curT * 100) / 100; wid.callback?.(wid.value); }
                 node.setDirtyCanvas(true, true);
@@ -516,9 +521,14 @@ function setupWaveformWidget(node) {
             return true;
         }
         if (e.key === "o" || e.key === "O") {
+            let curT = null;
             if (st.playSource && st.audioCtx) {
                 const elapsed = st.audioCtx.currentTime - st.playStartAt;
-                const curT = st.playOffset + Math.min(elapsed, st.playDuration);
+                curT = st.playOffset + Math.min(elapsed, st.playDuration);
+            } else if (st.scrubTime !== null) {
+                curT = st.scrubTime;
+            }
+            if (curT !== null) {
                 const wid = node.widgets?.find(x => x.name === "end_sec");
                 if (wid) { wid.value = Math.round(curT * 100) / 100; wid.callback?.(wid.value); }
                 node.setDirtyCanvas(true, true);

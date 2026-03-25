@@ -44,11 +44,10 @@ Interactive audio trimmer with a DAW-style waveform widget.
 | Key | Action |
 |-----|--------|
 | `Space` | Play / Stop |
-| `←` `→` | Nudge active marker by 1 frame |
-| `Shift + ←` `→` | Nudge by 10 frames |
+| `Shift + ←` `→` | Nudge active marker by 1 second |
 | `Tab` | Switch active marker (start ↔ end) |
-| `I` | Set start marker to current playback position |
-| `O` | Set end marker to current playback position |
+| `I` | Set start marker to cursor / playback position |
+| `O` | Set end marker to cursor / playback position |
 
 ---
 
@@ -96,7 +95,7 @@ Diagnostic node that outputs audio metadata as individual values and a summary s
 
 ```bash
 cd ComfyUI/custom_nodes
-git clone https://github.com/afloy011-spec/afloy_audio_tools.git "Afloy Audio Tools"
+git clone https://github.com/afloy011-spec/Afloy-Audio-Tools.git "Afloy Audio Tools"
 ```
 
 Restart ComfyUI. No additional Python dependencies — the nodes use `numpy`, `Pillow`, and `torch` which are already part of ComfyUI.
