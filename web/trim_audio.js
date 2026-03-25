@@ -703,10 +703,13 @@ function handleMouse(event, pos, node, st, ww) {
 
         if (nearStart && nearEnd) {
             st.dragging = lx <= sxPx ? "start" : "end";
+            st.activeMarker = st.dragging;
         } else if (nearStart) {
             st.dragging = "start";
+            st.activeMarker = "start";
         } else if (nearEnd) {
             st.dragging = "end";
+            st.activeMarker = "end";
         } else if (nearScrub) {
             st.dragging = "scrub";
         } else if (inRegion) {
