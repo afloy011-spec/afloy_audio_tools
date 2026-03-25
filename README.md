@@ -1,10 +1,43 @@
 # Afloy Audio Tools
 
-Custom audio nodes for [ComfyUI](https://github.com/comfyanonymous/ComfyUI) — professional audio editing right inside your workflow.
+Professional audio editing nodes for [ComfyUI](https://github.com/comfyanonymous/ComfyUI) — trim, measure, and inspect audio without leaving your workflow.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![ComfyUI](https://img.shields.io/badge/ComfyUI-compatible-8A2BE2?style=flat-square)](https://github.com/comfyanonymous/ComfyUI)
 
 ![Afloy Audio Trim — interactive waveform](docs/trim_audio_preview.png)
 
-### Install
+<p>
+<a href="https://github.com/afloy011-spec/afloy_audio_tools/archive/refs/heads/main.zip"><img src="https://img.shields.io/badge/Download_ZIP-059669?style=for-the-badge&logo=github&logoColor=white" alt="Download ZIP" height="32"></a>&nbsp;
+<a href="#quick-start"><img src="https://img.shields.io/badge/Quick_Start-D97706?style=for-the-badge&logo=lightning&logoColor=white" alt="Quick Start" height="32"></a>&nbsp;
+<a href="#nodes"><img src="https://img.shields.io/badge/Nodes-2563EB?style=for-the-badge&logo=diagramsdotnet&logoColor=white" alt="Nodes" height="32"></a>
+</p>
+
+## Contents
+
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Nodes](#nodes)
+  - [Afloy Audio Trim](#afloy-audio-trim)
+  - [Afloy Audio Duration](#afloy-audio-duration)
+  - [Afloy Audio Info](#afloy-audio-info)
+- [Requirements](#requirements)
+- [License](#license)
+
+---
+
+## Installation
+
+### Option A — Download ZIP (easiest)
+
+1. Click the green **Download ZIP** button above or [download here](https://github.com/afloy011-spec/afloy_audio_tools/archive/refs/heads/main.zip).
+2. Extract the archive.
+3. Rename the extracted folder to `Afloy Audio Tools`.
+4. Move it into `ComfyUI/custom_nodes/`.
+5. Restart ComfyUI.
+
+### Option B — Git clone
 
 ```bash
 cd ComfyUI/custom_nodes
@@ -13,200 +46,155 @@ git clone https://github.com/afloy011-spec/afloy_audio_tools.git "Afloy Audio To
 
 Restart ComfyUI.
 
----
+> [!NOTE]
+> No extra pip packages needed — the nodes use `numpy`, `Pillow`, and `torch` that already ship with ComfyUI.
 
-## Quick Start (Afloy Audio Trim)
+<p align="right"><a href="#contents">↑ Back to top</a></p>
 
-Use the main node to trim audio directly in your workflow.
+## Quick Start
 
-1. Add an `Afloy Audio Trim` node and connect `audio`.
-2. Drag `start_sec` / `end_sec` markers (or press `Tab` to switch, `I`/`O` to set from the cursor).
-3. Drag the white scrub cursor to seek; press `Space` to play/stop.
-4. Use `+`/`-` (or mouse wheel) for zoom and `Shift + mouse wheel` for horizontal scroll.
+> [!TIP]
+> Use **Afloy Audio Trim** to trim audio directly inside your workflow.
 
-Widget highlights:
+1. Add an **Afloy Audio Trim** node and connect `audio`.
+2. Drag `start_sec` / `end_sec` markers (or press `Tab` to switch, `I` / `O` to set from cursor).
+3. Drag the white scrub cursor to seek; press `Space` to play / stop.
+4. Use `+` / `-` (or mouse wheel) to zoom, `Shift + mouse wheel` to scroll.
 
-- Filled-polygon waveform (classic DAW look)
-- Draggable start/end markers with zero-crossing snap
-- Draggable scrub cursor — click to place, drag to seek
-- Play from cursor position (constrained to selection)
-- Region drag — grab inside the selection to move both markers
-- Zoom up to 50x via `+`/`-` buttons or mouse wheel
-- Horizontal scroll with `Shift + mouse wheel`
-- In-node playback with loop toggle
-- Hover tooltip showing time under cursor
+### Widget Features
 
-**Keyboard shortcuts** (when the node is selected):
-
-<table style="border-collapse:collapse;width:100%;table-layout:fixed;margin:8px 0;">
-  <thead>
-    <tr>
-      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:35%;">Key</th>
-      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">Space</span></td>
-      <td style="border:1px solid #d0d7de;padding:8px;">Play / Stop</td>
-    </tr>
-    <tr>
-      <td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">Shift + &larr; &rarr;</span></td>
-      <td style="border:1px solid #d0d7de;padding:8px;">Nudge active marker by 1 second</td>
-    </tr>
-    <tr>
-      <td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">Tab</span></td>
-      <td style="border:1px solid #d0d7de;padding:8px;">Switch active marker (start ↔ end)</td>
-    </tr>
-    <tr>
-      <td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">I</span></td>
-      <td style="border:1px solid #d0d7de;padding:8px;">Set start marker to cursor / playback position</td>
-    </tr>
-    <tr>
-      <td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">O</span></td>
-      <td style="border:1px solid #d0d7de;padding:8px;">Set end marker to cursor / playback position</td>
-    </tr>
-  </tbody>
+<table>
+<thead><tr><th align="left"><img width="400" height="1" alt=""><br>Feature</th><th align="left"><img width="600" height="1" alt=""><br>Details</th></tr></thead>
+<tbody>
+<tr><td><b>Waveform</b></td><td>Filled-polygon, classic DAW look</td></tr>
+<tr><td><b>Markers</b></td><td>Draggable start / end with zero-crossing snap</td></tr>
+<tr><td><b>Scrub Cursor</b></td><td>Click to place, drag to seek</td></tr>
+<tr><td><b>Playback</b></td><td>From cursor position, constrained to selection</td></tr>
+<tr><td><b>Region Drag</b></td><td>Grab inside selection to move both markers</td></tr>
+<tr><td><b>Zoom</b></td><td>Up to 50× via <code>+</code> / <code>-</code> buttons or mouse wheel</td></tr>
+<tr><td><b>Scroll</b></td><td>Horizontal with <code>Shift + mouse wheel</code></td></tr>
+<tr><td><b>Loop</b></td><td>In-node playback with loop toggle</td></tr>
+<tr><td><b>Tooltip</b></td><td>Hover to see time under cursor</td></tr>
+</tbody>
 </table>
+
+### Keyboard Shortcuts
+
+<table>
+<thead><tr><th align="left"><img width="400" height="1" alt=""><br>Key</th><th align="left"><img width="600" height="1" alt=""><br>Action</th></tr></thead>
+<tbody>
+<tr><td><code>Space</code></td><td>Play / Stop</td></tr>
+<tr><td><code>Shift + ← →</code></td><td>Nudge active marker by 1 s</td></tr>
+<tr><td><code>Tab</code></td><td>Switch active marker (start / end)</td></tr>
+<tr><td><code>I</code></td><td>Set <b>start</b> marker to cursor position</td></tr>
+<tr><td><code>O</code></td><td>Set <b>end</b> marker to cursor position</td></tr>
+</tbody>
+</table>
+
+<p align="right"><a href="#contents">↑ Back to top</a></p>
 
 ---
 
 ## Nodes
 
-All three nodes appear under **audio > Afloy Audio Tools** in the node menu.
+> [!NOTE]
+> All three nodes appear under **audio → Afloy Audio Tools** in the Add Node menu.
 
 ### Afloy Audio Trim
 
 Interactive audio trimmer with a DAW-style waveform widget.
 
-<table style="border-collapse:collapse;width:100%;table-layout:fixed;margin:8px 0;">
-  <thead>
-    <tr>
-      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:28%;">Input</th>
-      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:18%;">Type</th>
-      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">audio</span></td><td style="border:1px solid #d0d7de;padding:8px;">AUDIO</td><td style="border:1px solid #d0d7de;padding:8px;">Source audio</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">start_sec</span></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Trim start (seconds)</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">end_sec</span></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Trim end (-1 = end of file)</td></tr>
-  </tbody>
+**Inputs**
+
+<table>
+<thead><tr><th align="left"><img width="280" height="1" alt=""><br>Name</th><th align="left"><img width="140" height="1" alt=""><br>Type</th><th align="left"><img width="580" height="1" alt=""><br>Description</th></tr></thead>
+<tbody>
+<tr><td><code>audio</code></td><td><code>AUDIO</code></td><td>Source audio signal</td></tr>
+<tr><td><code>start_sec</code></td><td><code>FLOAT</code></td><td>Trim start (seconds)</td></tr>
+<tr><td><code>end_sec</code></td><td><code>FLOAT</code></td><td>Trim end (<code>-1</code> = end of file)</td></tr>
+</tbody>
 </table>
 
-<table style="border-collapse:collapse;width:100%;table-layout:fixed;margin:8px 0;">
-  <thead>
-    <tr>
-      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:28%;">Output</th>
-      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:18%;">Type</th>
-      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">audio</span></td><td style="border:1px solid #d0d7de;padding:8px;">AUDIO</td><td style="border:1px solid #d0d7de;padding:8px;">Trimmed segment</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">waveform_preview</span></td><td style="border:1px solid #d0d7de;padding:8px;">IMAGE</td><td style="border:1px solid #d0d7de;padding:8px;">Static waveform image</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">duration_sec</span></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Segment length</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">timecode</span></td><td style="border:1px solid #d0d7de;padding:8px;">STRING</td><td style="border:1px solid #d0d7de;padding:8px;">MM:SS.ms timecode</td></tr>
-  </tbody>
+**Outputs**
+
+<table>
+<thead><tr><th align="left"><img width="280" height="1" alt=""><br>Name</th><th align="left"><img width="140" height="1" alt=""><br>Type</th><th align="left"><img width="580" height="1" alt=""><br>Description</th></tr></thead>
+<tbody>
+<tr><td><code>audio</code></td><td><code>AUDIO</code></td><td>Trimmed audio segment</td></tr>
+<tr><td><code>waveform_preview</code></td><td><code>IMAGE</code></td><td>Static waveform image</td></tr>
+<tr><td><code>duration_sec</code></td><td><code>FLOAT</code></td><td>Segment length in seconds</td></tr>
+<tr><td><code>timecode</code></td><td><code>STRING</code></td><td><code>MM:SS.ms</code> timecode</td></tr>
+</tbody>
 </table>
 
 ---
 
 ### Afloy Audio Duration
 
-Returns audio length in multiple formats — useful for syncing with video/animation.
+Returns audio length in multiple formats — useful for syncing with video or animation frames.
 
-<table style="border-collapse:collapse;width:100%;table-layout:fixed;margin:8px 0;">
-  <thead>
-    <tr>
-      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:28%;">Input</th>
-      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:18%;">Type</th>
-      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">audio</span></td><td style="border:1px solid #d0d7de;padding:8px;">AUDIO</td><td style="border:1px solid #d0d7de;padding:8px;">Source audio</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">fps</span></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Frames per second (default 24)</td></tr>
-  </tbody>
+**Inputs**
+
+<table>
+<thead><tr><th align="left"><img width="280" height="1" alt=""><br>Name</th><th align="left"><img width="140" height="1" alt=""><br>Type</th><th align="left"><img width="580" height="1" alt=""><br>Description</th></tr></thead>
+<tbody>
+<tr><td><code>audio</code></td><td><code>AUDIO</code></td><td>Source audio signal</td></tr>
+<tr><td><code>fps</code></td><td><code>FLOAT</code></td><td>Frames per second (default <code>24</code>)</td></tr>
+</tbody>
 </table>
 
-<table style="border-collapse:collapse;width:100%;table-layout:fixed;margin:8px 0;">
-  <thead>
-    <tr>
-      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:28%;">Output</th>
-      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:18%;">Type</th>
-      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">duration_sec</span></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Duration in seconds</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">duration_sec_int</span></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Rounded duration</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">frames</span></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Frame count at given FPS</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">timecode</span></td><td style="border:1px solid #d0d7de;padding:8px;">STRING</td><td style="border:1px solid #d0d7de;padding:8px;">MM:SS.ms</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">sample_rate</span></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Hz</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">channels</span></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Mono/Stereo</td></tr>
-  </tbody>
+**Outputs**
+
+<table>
+<thead><tr><th align="left"><img width="280" height="1" alt=""><br>Name</th><th align="left"><img width="140" height="1" alt=""><br>Type</th><th align="left"><img width="580" height="1" alt=""><br>Description</th></tr></thead>
+<tbody>
+<tr><td><code>duration_sec</code></td><td><code>FLOAT</code></td><td>Duration in seconds</td></tr>
+<tr><td><code>duration_sec_int</code></td><td><code>INT</code></td><td>Rounded duration</td></tr>
+<tr><td><code>frames</code></td><td><code>INT</code></td><td>Frame count at given FPS</td></tr>
+<tr><td><code>timecode</code></td><td><code>STRING</code></td><td><code>MM:SS.ms</code></td></tr>
+<tr><td><code>sample_rate</code></td><td><code>INT</code></td><td>Sample rate (Hz)</td></tr>
+<tr><td><code>channels</code></td><td><code>INT</code></td><td>Mono / Stereo</td></tr>
+</tbody>
 </table>
 
 ---
 
 ### Afloy Audio Info
 
-Diagnostic node that outputs audio metadata as individual values and a summary string.
+Diagnostic node — outputs audio metadata as individual values and a human-readable summary.
 
-<table style="border-collapse:collapse;width:100%;table-layout:fixed;margin:8px 0;">
-  <thead>
-    <tr>
-      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:28%;">Input</th>
-      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:18%;">Type</th>
-      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">audio</span></td><td style="border:1px solid #d0d7de;padding:8px;">AUDIO</td><td style="border:1px solid #d0d7de;padding:8px;">Source audio</td></tr>
-  </tbody>
+**Inputs**
+
+<table>
+<thead><tr><th align="left"><img width="280" height="1" alt=""><br>Name</th><th align="left"><img width="140" height="1" alt=""><br>Type</th><th align="left"><img width="580" height="1" alt=""><br>Description</th></tr></thead>
+<tbody>
+<tr><td><code>audio</code></td><td><code>AUDIO</code></td><td>Source audio signal</td></tr>
+</tbody>
 </table>
 
-<table style="border-collapse:collapse;width:100%;table-layout:fixed;margin:8px 0;">
-  <thead>
-    <tr>
-      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:28%;">Output</th>
-      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;width:18%;">Type</th>
-      <th style="border:1px solid #d0d7de;background:#f6f8fa;padding:8px;text-align:left;">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">sample_rate</span></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Sample rate in Hz</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">channels</span></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Number of channels</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">total_samples</span></td><td style="border:1px solid #d0d7de;padding:8px;">INT</td><td style="border:1px solid #d0d7de;padding:8px;">Total sample count</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">duration_sec</span></td><td style="border:1px solid #d0d7de;padding:8px;">FLOAT</td><td style="border:1px solid #d0d7de;padding:8px;">Duration in seconds</td></tr>
-    <tr><td style="border:1px solid #d0d7de;padding:8px;"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;display:inline-block;">info</span></td><td style="border:1px solid #d0d7de;padding:8px;">STRING</td><td style="border:1px solid #d0d7de;padding:8px;">Human-readable summary</td></tr>
-  </tbody>
+**Outputs**
+
+<table>
+<thead><tr><th align="left"><img width="280" height="1" alt=""><br>Name</th><th align="left"><img width="140" height="1" alt=""><br>Type</th><th align="left"><img width="580" height="1" alt=""><br>Description</th></tr></thead>
+<tbody>
+<tr><td><code>sample_rate</code></td><td><code>INT</code></td><td>Sample rate in Hz</td></tr>
+<tr><td><code>channels</code></td><td><code>INT</code></td><td>Number of channels</td></tr>
+<tr><td><code>total_samples</code></td><td><code>INT</code></td><td>Total sample count</td></tr>
+<tr><td><code>duration_sec</code></td><td><code>FLOAT</code></td><td>Duration in seconds</td></tr>
+<tr><td><code>info</code></td><td><code>STRING</code></td><td>Human-readable summary</td></tr>
+</tbody>
 </table>
 
----
-
-## Installation
-
-### Manual
-
-```bash
-cd ComfyUI/custom_nodes
-git clone https://github.com/afloy011-spec/afloy_audio_tools.git "Afloy Audio Tools"
-```
-
-Restart ComfyUI. No additional Python dependencies — the nodes use `numpy`, `Pillow`, and `torch` which are already part of ComfyUI.
+<p align="right"><a href="#contents">↑ Back to top</a></p>
 
 ---
 
 ## Requirements
 
-- ComfyUI (any recent version)
-- Python 3.10+
-- No extra pip packages needed
-
----
+- **ComfyUI** — any recent version
+- **Python** — 3.10+
+- **Extra pip packages** — none
 
 ## License
 
-[MIT](LICENSE)
+This project is licensed under the [MIT License](LICENSE).
