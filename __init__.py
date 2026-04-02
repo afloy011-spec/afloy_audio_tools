@@ -134,7 +134,10 @@ class GetAudioDuration:
 class TrimAudio:
     """Cuts a segment from audio by start/end time in seconds.
     Outputs trimmed audio + waveform preview image.
-    Set end_sec to -1 to trim from start_sec to the end of the audio."""
+    Set end_sec to -1 to trim from start_sec to the end of the audio.
+
+    The web UI (waveform) reloads when the upstream Load Audio file changes via
+    widget callback — see web/trim_audio.js `bindUpstreamAudioWidget`."""
 
     @classmethod
     def INPUT_TYPES(cls):
@@ -151,22 +154,45 @@ class TrimAudio:
     FUNCTION      = "trim"
     CATEGORY      = "audio/Afloy Audio Tools"
 
+    @classmethod
+    def IS_CHANGED(cls, audio, start_sec, end_sec):
+        """Invalidate cache when tensor or sample rate changes (new clip / resample)."""
+        w = audio.get("waveform")
+        if w is None or not hasattr(w, "shape"):
+            return float("nan")
+        sr = float(audio.get("sample_rate", 0))
+        wav = w[0] if w.ndim == 3 else w
+        n = int(wav.shape[-1])
+        ch = int(wav.shape[-2]) if wav.ndim >= 2 else 1
+        if n < 1:
+            return (0, ch, sr, start_sec, end_sec)
+        head = float(wav[..., : min(8, n)].mean().item())
+        tail = float(wav[..., -min(8, n) :].mean().item())
+        return (n, ch, sr, head, tail, start_sec, end_sec)
+
     def trim(self, audio, start_sec, end_sec):
         waveform    = audio["waveform"]
         sample_rate = audio["sample_rate"]
 
         total_samples  = waveform.shape[-1]
+        if total_samples < 1:
+            raise ValueError(
+                "Afloy Audio Trim: input has no samples (check the file in Load Audio)."
+            )
         total_duration = total_samples / sample_rate
 
         start_sec    = max(0.0, min(start_sec, total_duration))
         start_sample = int(start_sec * sample_rate)
-        start_sample = min(start_sample, total_samples - 1)
+        start_sample = min(start_sample, max(0, total_samples - 1))
         end_sample   = total_samples if end_sec < 0 else int(min(end_sec, total_duration) * sample_rate)
         end_sample   = max(end_sample, start_sample + 1)
 
         end_sec_actual = end_sample / sample_rate
         trimmed        = waveform[..., start_sample:end_sample]
-        duration       = float(trimmed.shape[-1] / sample_rate)
+        duration       = max(
+            float(trimmed.shape[-1] / sample_rate),
+            1.0 / float(sample_rate),
+        )
         preview_img    = _draw_waveform(waveform, sample_rate, start_sec, end_sec_actual, total_duration)
 
         return ({"waveform": trimmed, "sample_rate": sample_rate}, preview_img, duration, _fmt_time(duration))

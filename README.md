@@ -75,14 +75,16 @@ Restart ComfyUI.
 
 1. Add an **Afloy Audio Trim** node and connect `audio`.
 2. Drag `start_sec` / `end_sec` markers (or press `Tab` to switch, `I` / `O` to set from cursor).
-3. Drag the white scrub cursor to seek; press `Space` to play / stop.
-4. Use `+` / `-` (or mouse wheel) to zoom, `Shift + mouse wheel` to scroll.
+3. Drag the white scrub cursor to seek; press `Space` to play / stop (does not re-fetch the file).
+4. After you change the file in **Load Audio**, click **Reload** in the node toolbar or press `F5`.
+5. Use `+` / `-` (or mouse wheel) to zoom, `Shift + mouse wheel` to scroll.
 
 ### Widget Features
 
 <table>
 <thead><tr><th align="left"><img width="400" height="1" alt=""><br>Feature</th><th align="left"><img width="600" height="1" alt=""><br>Details</th></tr></thead>
 <tbody>
+<tr><td><b>Toolbar</b></td><td>Reload (<code>F5</code>), zoom, loop, play — controls stay above the waveform</td></tr>
 <tr><td><b>Waveform</b></td><td>Filled-polygon, classic DAW look</td></tr>
 <tr><td><b>Markers</b></td><td>Draggable start / end with zero-crossing snap</td></tr>
 <tr><td><b>Scrub Cursor</b></td><td>Click to place, drag to seek</td></tr>
@@ -100,6 +102,7 @@ Restart ComfyUI.
 <table>
 <thead><tr><th align="left"><img width="400" height="1" alt=""><br>Key</th><th align="left"><img width="600" height="1" alt=""><br>Action</th></tr></thead>
 <tbody>
+<tr><td><code>F5</code></td><td>Reload waveform from disk (after changing file in Load Audio)</td></tr>
 <tr><td><code>Space</code></td><td>Play / Stop</td></tr>
 <tr><td><code>Shift + ← →</code></td><td>Nudge active marker by 1 s</td></tr>
 <tr><td><code>Tab</code></td><td>Switch active marker (start / end)</td></tr>
